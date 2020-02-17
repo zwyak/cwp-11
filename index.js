@@ -85,7 +85,7 @@ const createFilm = (title, rating, year, budget, gross, poster, position) =>{
   return film;
 }
 
-function deleteFilm(id){
+const deleteFilm = (id) =>{
   let index;
   let result;
 
@@ -107,6 +107,39 @@ function deleteFilm(id){
   films = require('./top250.json');
 
   return result;
+}
+
+const addActor = (name, birth, films, liked, photo) =>{
+  let actor ={
+    id: Date.now(),
+    name: "",
+    birth: "",
+    films: 0,
+    liked: 0,
+    photo: "",
+  };
+
+  if (films && films >= 0){
+    actor.films = films;
+  }else{
+    return {Error: films, ErrorField: 'films'};
+  }
+
+  if (liked && liked >= 0){
+    actor.liked = liked;
+  }else{
+    return {Error: liked, ErrorField: 'liked'};
+  }
+
+  if (name) actor.name = name;
+  if (birth) actor.birth = birth;
+  if (photo) actor.photo = photo;
+
+  actors.push(actor);
+  utils.writeJson('./actors.json', JSON.stringify(actors));
+  actors = require('./actors.json');
+
+  return actor;
 }
 
 filmsRouter.get('/readall', (req, res) => {
@@ -135,6 +168,10 @@ actorsRouter.get('/readall', (req, res) => {
 actorsRouter.get('/read', (req, res) => {
   const result = actors.filter(actor => actor.id == req.query.id);
   res.send(result);
+});
+
+filmsRouter.post('/create', (req, res) => {
+  res.send(createActor(req.body.name, req.body.birth, req.body.films, req.body.liked, req.body.photo));
 });
 
 app.use("/api/actors", actorsRouter);
