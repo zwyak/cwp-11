@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Побег из Шоушенка",
+    "rating": "9.190",
+    "year": 1994,
+    "budget": 25000000,
+    "gross": 28418687,
+    "poster": "https://www.kinopoisk.ru/images/film_big/326.jpg",
+    "position": 1
+  },
+  {
+    "id": 2,
+    "title": "Зеленая миля",
+    "rating": "9.061",
+    "year": 1999,
+    "budget": 60000000,
+    "gross": 286601374,
+    "poster": "https://www.kinopoisk.ru/images/film_big/435.jpg",
+    "position": 2
+  },
+  {
+    "id": 3,
+    "title": "Форрест Гамп",
+    "rating": "8.913",
+    "year": 1994,
+    "budget": 55000000,
+    "gross": 677387716,
+    "poster": "https://www.kinopoisk.ru/images/film_big/448.jpg",
+    "position": 3
+  },
+  {
+    "id": 4,
+    "title": "Список Шиндлера",
+    "rating": "8.817",
+    "year": 1993,
+    "budget": 22000000,
+    "gross": 321306305,
+    "poster": "https://www.kinopoisk.ru/images/film_big/329.jpg",
+    "position": 4
+  },
+  {
+    "id": 5,
+    "title": "1+1",
+    "rating": "8.807",
+    "year": 2011,
+    "budget": 9500000,
+    "gross": 426588510,
+    "poster": "https://www.kinopoisk.ru/images/film_big/535341.jpg",
+    "position": 5
+  },
+  {
+    "id": 6,
+    "title": "Начало",
+    "rating": "8.662",
+    "year": 2010,
+    "budget": 160000000,
+    "gross": 828322032,
+    "poster": "https://www.kinopoisk.ru/images/film_big/447301.jpg",
+    "position": 6
+  },
+  {
+    "id": 7,
+    "title": "Леон",
+    "rating": "8.681",
+    "year": 1994,
+    "budget": 115000000,
+    "gross": 19501328,
+    "poster": "https://www.kinopoisk.ru/images/film_big/389.jpg",
+    "position": 7
+  },
+  {
+    "id": 8,
+    "title": "Король Лев",
+    "rating": "8.773",
+    "year": 1994,
+    "budget": 45000000,
+    "gross": 763455561,
+    "poster": "https://www.kinopoisk.ru/images/film_big/2360.jpg",
+    "position": 8
+  },
+  {
+    "id": 9,
+    "title": "Бойцовский клуб",
+    "rating": "8.645",
+    "year": 1999,
+    "budget": 63000000,
+    "gross": 100853753,
+    "poster": "https://www.kinopoisk.ru/images/film_big/361.jpg",
+    "position": 9
+  },
+  {
+    "id": 10,
+    "title": "Иван Васильевич меняет профессию",
+    "rating": "8.782",
+    "year": 1973,
+    "budget": 0,
+    "gross": 0,
+    "poster": "https://www.kinopoisk.ru/images/film_big/361.jpg",
+    "position": 10
+  }
+]
