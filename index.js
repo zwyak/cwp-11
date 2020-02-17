@@ -1,9 +1,16 @@
 const express = require('express');
-let films = require('./top250.json');
-const utils = require('./utils.js');
 const bodyParser = require('body-parser');
+
+let films = require('./top250.json');
+let actors = require('./actors.json');
+const utils = require('./utils.js');
+
 const app = express();
 app.use(bodyParser.json());
+
+const filmsRouter = express.Router();
+const actorsRouter = express.Router();
+const apiRouter = express.Router();
 
 const mods = {Forward: "F", Backward: "B" };
 
@@ -102,22 +109,35 @@ function deleteFilm(id){
   return result;
 }
 
-app.get('/api/films/readall', (req, res) => {
+filmsRouter.get('/readall', (req, res) => {
   res.send(utils.sortArray(films, 'position', 'ASC'));
 });
 
-app.get('/api/films/read', (req, res) => {
+filmsRouter.get('/read', (req, res) => {
   const result = films.filter(film => film.id == req.query.id);
   res.send(result);
 });
 
-app.post('/api/films/create', (req, res) => {
+filmsRouter.post('/api/films/create', (req, res) => {
   res.send(createFilm(req.body.title, req.body.rating, req.body.year, req.body.budget, req.body.gross, req.body.poster, req.body.position));
 });
 
-app.post('/api/films/delete', (req, res) => {
+filmsRouter.post('/api/films/delete', (req, res) => {
   res.send(deleteFilm(req.body.id));
 });
+
+app.use("/api/films", filmsRouter);
+
+actorsRouter.get('/readall', (req, res) => {
+  res.send(utils.sortArray(actors, 'liked', 'DESC'));
+});
+
+actorsRouter.get('/read', (req, res) => {
+  const result = actors.filter(actor => actor.id == req.query.id);
+  res.send(result);
+});
+
+app.use("/api/actors", actorsRouter);
 
 app.listen(3000, () => {
   console.log('Server app listening on port 3000!');
