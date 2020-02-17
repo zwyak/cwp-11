@@ -170,7 +170,7 @@ actorsRouter.get('/read', (req, res) => {
   res.send(result);
 });
 
-filmsRouter.post('/create', (req, res) => {
+actorRouter.post('/create', (req, res) => {
   res.send(createActor(req.body.name, req.body.birth, req.body.films, req.body.liked, req.body.photo));
 });
 
