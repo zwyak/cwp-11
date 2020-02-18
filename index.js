@@ -109,7 +109,7 @@ const deleteFilm = (id) =>{
   return result;
 }
 
-const addActor = (name, birth, films, liked, photo) =>{
+const createActor = (name, birth, films, liked, photo) =>{
   let actor ={
     id: Date.now(),
     name: "",
@@ -170,7 +170,7 @@ actorsRouter.get('/read', (req, res) => {
   res.send(result);
 });
 
-actorRouter.post('/create', (req, res) => {
+actorsRouter.post('/create', (req, res) => {
   res.send(createActor(req.body.name, req.body.birth, req.body.films, req.body.liked, req.body.photo));
 });
 
