@@ -8,6 +8,13 @@ const utils = require('./utils.js');
 const app = express();
 app.use(bodyParser.json());
 
+app.use("/api/*", (request, response, next) =>{
+    const data = {Date: new Date().toString(), Url: request.originalUrl, Params: request.query}
+    console.log("Middleware:");
+    console.log(data);
+    next();
+});
+
 const filmsRouter = express.Router();
 const actorsRouter = express.Router();
 const apiRouter = express.Router();
