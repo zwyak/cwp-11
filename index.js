@@ -142,6 +142,57 @@ const createActor = (name, birth, films, liked, photo) =>{
   return actor;
 }
 
+const updateActor = (id, name, birth, films, liked, photo) =>{
+  let index;
+  let result;
+
+  actors.forEach((item, i) => {
+    if (item.id == id){
+      index = i;
+      result = item;
+    }
+  });
+
+  if (result){
+    if (name) actors[index].name = name;
+    if (birth) actors[index].birth = birth;
+    if (films && films >= 0) actors[index].films = films;
+    if (liked && liked >= 0) actors[index].liked = liked;
+    if (photo) actors[index].photo = photo;
+  }else{
+    return {Error: result, ErrorField: 'actor'};
+  }
+
+  utils.writeJson('./actors.json', JSON.stringify(actors));
+  actors = require('./actors.json');
+
+  return actors[index];
+}
+
+const deleteActor = (id) =>{
+  let index;
+  let result;
+
+  actors.forEach((item, i) => {
+    if (item.id == id){
+      index = i;
+      result = item;
+    }
+  });
+
+  if (result){
+    actors.splice(index, 1);
+    result.deletedAt = new Date().toString();
+  }else{
+    return {Error: result, ErrorField: 'actor'};
+  }
+
+  utils.writeJson('./actors.json', JSON.stringify(actors));
+  actors = require('./actors.json');
+
+  return result;
+}
+
 filmsRouter.get('/readall', (req, res) => {
   res.send(utils.sortArray(films, 'position', 'ASC'));
 });
@@ -172,6 +223,14 @@ actorsRouter.get('/read', (req, res) => {
 
 actorsRouter.post('/create', (req, res) => {
   res.send(createActor(req.body.name, req.body.birth, req.body.films, req.body.liked, req.body.photo));
+});
+
+actorsRouter.post('/update', (req, res) => {
+  res.send(updateActor(req.body.id, req.body.name, req.body.birth, req.body.films, req.body.liked, req.body.photo));
+});
+
+actorsRouter.post('/delete', (req, res) => {
+  res.send(deleteActor(req.body.id));
 });
 
 app.use("/api/actors", actorsRouter);
