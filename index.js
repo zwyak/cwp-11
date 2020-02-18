@@ -15,6 +15,8 @@ app.use("/api/*", (request, response, next) =>{
     next();
 });
 
+app.use(express.static(__dirname + '/images/actors'));
+
 const filmsRouter = express.Router();
 const actorsRouter = express.Router();
 const apiRouter = express.Router();
