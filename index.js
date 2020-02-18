@@ -15,7 +15,15 @@ app.use("/api/*", (request, response, next) =>{
     next();
 });
 
-app.use(express.static(__dirname + '/images/actors'));
+const options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['jpg', 'jpeg'],
+  index: false,
+  redirect: false
+}
+
+app.use(express.static(__dirname + '/images/actors', options));
 
 const filmsRouter = express.Router();
 const actorsRouter = express.Router();
